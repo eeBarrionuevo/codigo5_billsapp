@@ -7,8 +7,10 @@ class DBAdmin {
   initDatabase() async {
     Directory directory = await getApplicationDocumentsDirectory();
     String pathDatabase = join(directory.path, "BillsDB.db");
-    openDatabase(
-      pathDatabase,
-    );
+    openDatabase(pathDatabase, version: 1,
+        onCreate: (Database db, int version) {
+      db.execute(
+          "CREATE TABLE BILL(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, price REAL, datetime TEXT, type TEXT)");
+    });
   }
 }
