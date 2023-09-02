@@ -15,11 +15,25 @@ class _HomePageState extends State<HomePage> {
 
   showDateTimePicker() async {
     DateTime? datePicker = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2030),
-    );
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2020),
+        lastDate: DateTime(2030),
+        builder: (BuildContext context, Widget? child) {
+          return Theme(
+            data: ThemeData.light().copyWith(
+              dialogTheme: DialogTheme(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16.0),
+                ),
+              ),
+              colorScheme: ColorScheme.light(
+                primary: Color(0xff101321),
+              ),
+            ),
+            child: child!,
+          );
+        });
     if (datePicker != null) {
       _dateController.text = datePicker.toString();
       print(_dateController.text);
