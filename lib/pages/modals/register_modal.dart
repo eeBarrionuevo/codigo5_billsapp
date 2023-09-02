@@ -62,7 +62,7 @@ class _RegisterModalState extends State<RegisterModal> {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Text(
-            "Registrar salida",
+            "Registrar gasto",
             style: TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 16.0,
