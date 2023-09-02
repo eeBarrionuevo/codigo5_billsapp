@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: const [
         Locale('es', 'ES'),
-        Locale('en', 'US'),
+        // Locale('en', 'US'),
       ],
       home: HomePage(),
     );

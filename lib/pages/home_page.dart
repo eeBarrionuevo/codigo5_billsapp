@@ -1,6 +1,7 @@
 import 'package:codigo5_billsapp/widgets/item_bill_widget.dart';
 import 'package:codigo5_billsapp/widgets/texfield_normal_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(16.0),
                 ),
               ),
-              colorScheme: ColorScheme.light(
+              colorScheme: const ColorScheme.light(
                 primary: Color(0xff101321),
               ),
             ),
@@ -35,8 +36,9 @@ class _HomePageState extends State<HomePage> {
           );
         });
     if (datePicker != null) {
-      _dateController.text = datePicker.toString();
-      print(_dateController.text);
+      final DateFormat formatter = DateFormat('dd-MM-yyyy');
+      final String formatted = formatter.format(datePicker);
+      _dateController.text = formatted;
       setState(() {});
     }
   }
@@ -97,6 +99,28 @@ class _HomePageState extends State<HomePage> {
                   },
                   controller: _dateController,
                 ),
+                Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+                  decoration: BoxDecoration(
+                    color: Color(0xff101321).withOpacity(0.03),
+                    borderRadius: BorderRadius.circular(14.0),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Image.asset(
+                        "assets/images/dieta.png",
+                        height: 40,
+                        width: 40,
+                      ),
+                      const SizedBox(
+                        width: 6.0,
+                      ),
+                      Text("Alimentos"),
+                    ],
+                  ),
+                ),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -129,6 +153,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // final DateTime now = DateTime.now();
+    // print(now);
+    // // final DateFormat formatter = DateFormat('dd-MM-yyyy H:m a');
+    // final DateFormat formatter = DateFormat('dd-MM-yyyy');
+    // final String formatted = formatter.format(now);
+    // print(formatted);
+
     return Scaffold(
       body: Stack(
         children: [
