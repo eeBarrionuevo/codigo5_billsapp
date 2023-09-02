@@ -1,3 +1,4 @@
+import 'package:codigo5_billsapp/pages/modals/register_modal.dart';
 import 'package:codigo5_billsapp/utils/data_general.dart';
 import 'package:codigo5_billsapp/widgets/item_bill_widget.dart';
 import 'package:codigo5_billsapp/widgets/item_type_widget.dart';
@@ -12,38 +13,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController _searchController = TextEditingController();
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _priceController = TextEditingController();
-  TextEditingController _dateController = TextEditingController();
-
-  showDateTimePicker() async {
-    DateTime? datePicker = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2020),
-        lastDate: DateTime(2030),
-        builder: (BuildContext context, Widget? child) {
-          return Theme(
-            data: ThemeData.light().copyWith(
-              dialogTheme: DialogTheme(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-              ),
-              colorScheme: const ColorScheme.light(
-                primary: Color(0xff101321),
-              ),
-            ),
-            child: child!,
-          );
-        });
-    if (datePicker != null) {
-      final DateFormat formatter = DateFormat('dd-MM-yyyy');
-      final String formatted = formatter.format(datePicker);
-      _dateController.text = formatted;
-      setState(() {});
-    }
-  }
 
   showRegisterModal() {
     showModalBottomSheet(
@@ -55,95 +24,7 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: Container(
-            padding:
-                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(34.0),
-                topRight: Radius.circular(34.0),
-              ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  "Registrar salida",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16.0,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                TextFieldNormalWidget(
-                  hintText: "Ingresa un título",
-                  controller: _titleController,
-                ),
-                const SizedBox(
-                  height: 12.0,
-                ),
-                TextFieldNormalWidget(
-                  hintText: "Ingresa el precio",
-                  isNumber: true,
-                  controller: _priceController,
-                ),
-                const SizedBox(
-                  height: 12.0,
-                ),
-                TextFieldNormalWidget(
-                  hintText: "Selecciona una fecha",
-                  isDatePicker: true,
-                  onMandarina: () {
-                    showDateTimePicker();
-                  },
-                  controller: _dateController,
-                ),
-                // Row(
-                //   children: [
-                //     ItemTypeWidget(),
-                //     ItemTypeWidget(),
-                //     ItemTypeWidget(),
-                //     ItemTypeWidget(),
-                //     ItemTypeWidget(),
-                //   ],
-                // ),
-                const SizedBox(
-                  height: 12.0,
-                ),
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: types.map((e) => ItemTypeWidget()).toList(),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff101321),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                    ),
-                    child: const Text(
-                      "Agregar",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          child: RegisterModal(),
         );
       },
     );
