@@ -6,11 +6,15 @@ class ItemBillWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
-        color: const Color(0xff101321).withOpacity(0.06),
+        color: const Color(0xff101321).withOpacity(0.05),
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: ListTile(
-        leading: CircleAvatar(),
+        leading: Image.asset(
+          "assets/images/dieta.png",
+          height: 40,
+          width: 40,
+        ),
         title: Text(
           "Compras en el super",
           style: TextStyle(

@@ -21,7 +21,36 @@ class HomePage extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   height: 100.0,
-                  color: Color(0xff101321),
+                  color: const Color(0xff101321),
+                  alignment: Alignment.center,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 4.0,
+                          ),
+                          Text(
+                            "Agregar",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 26.0,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
