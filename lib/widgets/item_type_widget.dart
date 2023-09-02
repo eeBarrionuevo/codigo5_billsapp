@@ -18,14 +18,16 @@ class ItemTypeWidget extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
         decoration: BoxDecoration(
-          color: Color(0xff101321).withOpacity(0.03),
+          color: isSelected
+              ? Color(0xff27E1C1).withOpacity(0.3)
+              : Color(0xff101321).withOpacity(0.03),
           borderRadius: BorderRadius.circular(14.0),
-          border: isSelected
-              ? Border.all(
-                  width: 1.0,
-                  color: Color(0xff101321),
-                )
-              : null,
+          // border: isSelected
+          //     ? Border.all(
+          //         width: 1.0,
+          //         color: Color(0xff101321),
+          //       )
+          //     : null,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
