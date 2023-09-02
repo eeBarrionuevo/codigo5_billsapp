@@ -8,6 +8,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  showDateTimePicker() {}
+
   showRegisterModal() {
     showModalBottomSheet(
       context: context,
@@ -38,22 +40,27 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 16.0,
                   ),
                 ),
-                // const Divider(
-                //   indent: 12.0,
-                //   endIndent: 12.0,
-                // ),
                 const SizedBox(
                   height: 20.0,
                 ),
-                TextFieldNormalWidget(),
+                TextFieldNormalWidget(
+                  hintText: "Ingresa un título",
+                ),
                 const SizedBox(
                   height: 12.0,
                 ),
-                TextFieldNormalWidget(),
+                TextFieldNormalWidget(
+                  hintText: "Ingresa el precio",
+                  isNumber: true,
+                ),
                 const SizedBox(
                   height: 12.0,
                 ),
-                TextFieldNormalWidget(),
+                TextFieldNormalWidget(
+                  hintText: "Selecciona una fecha",
+                  isDatePicker: true,
+                  onMandarina: () {},
+                ),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -174,7 +181,9 @@ class _HomePageState extends State<HomePage> {
                             const SizedBox(
                               height: 16.0,
                             ),
-                            TextFieldNormalWidget(),
+                            TextFieldNormalWidget(
+                              hintText: "Buscar por título",
+                            ),
                             const SizedBox(
                               height: 16.0,
                             ),
