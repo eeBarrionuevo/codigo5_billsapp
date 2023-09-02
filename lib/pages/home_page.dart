@@ -8,7 +8,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  showDateTimePicker() {}
+  TextEditingController _searchController = TextEditingController();
+  TextEditingController _titleController = TextEditingController();
+  TextEditingController _priceController = TextEditingController();
+  TextEditingController _dateController = TextEditingController();
+
+  showDateTimePicker() async {
+    DateTime? datePicker = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2030),
+    );
+    if (datePicker != null) {
+      _dateController.text = datePicker.toString();
+      print(_dateController.text);
+      setState(() {});
+    }
+  }
 
   showRegisterModal() {
     showModalBottomSheet(
@@ -45,6 +62,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextFieldNormalWidget(
                   hintText: "Ingresa un título",
+                  controller: _titleController,
                 ),
                 const SizedBox(
                   height: 12.0,
@@ -52,6 +70,7 @@ class _HomePageState extends State<HomePage> {
                 TextFieldNormalWidget(
                   hintText: "Ingresa el precio",
                   isNumber: true,
+                  controller: _priceController,
                 ),
                 const SizedBox(
                   height: 12.0,
@@ -59,7 +78,10 @@ class _HomePageState extends State<HomePage> {
                 TextFieldNormalWidget(
                   hintText: "Selecciona una fecha",
                   isDatePicker: true,
-                  onMandarina: () {},
+                  onMandarina: () {
+                    showDateTimePicker();
+                  },
+                  controller: _dateController,
                 ),
                 const SizedBox(
                   height: 20.0,
@@ -183,6 +205,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             TextFieldNormalWidget(
                               hintText: "Buscar por título",
+                              controller: _searchController,
                             ),
                             const SizedBox(
                               height: 16.0,

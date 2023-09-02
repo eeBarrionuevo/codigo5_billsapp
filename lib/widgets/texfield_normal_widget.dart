@@ -5,17 +5,20 @@ class TextFieldNormalWidget extends StatelessWidget {
   bool isNumber = false;
   bool isDatePicker = false;
   VoidCallback? onMandarina;
+  TextEditingController controller;
 
   TextFieldNormalWidget({
     required this.hintText,
     this.isNumber = false,
     this.isDatePicker = false,
     this.onMandarina,
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       keyboardType: isNumber ? TextInputType.number : TextInputType.text,
       readOnly: isDatePicker,
       onTap: onMandarina,
