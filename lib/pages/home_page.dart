@@ -1,4 +1,6 @@
+import 'package:codigo5_billsapp/utils/data_general.dart';
 import 'package:codigo5_billsapp/widgets/item_bill_widget.dart';
+import 'package:codigo5_billsapp/widgets/item_type_widget.dart';
 import 'package:codigo5_billsapp/widgets/texfield_normal_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -99,27 +101,23 @@ class _HomePageState extends State<HomePage> {
                   },
                   controller: _dateController,
                 ),
-                Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-                  decoration: BoxDecoration(
-                    color: Color(0xff101321).withOpacity(0.03),
-                    borderRadius: BorderRadius.circular(14.0),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        "assets/images/dieta.png",
-                        height: 40,
-                        width: 40,
-                      ),
-                      const SizedBox(
-                        width: 6.0,
-                      ),
-                      Text("Alimentos"),
-                    ],
-                  ),
+                // Row(
+                //   children: [
+                //     ItemTypeWidget(),
+                //     ItemTypeWidget(),
+                //     ItemTypeWidget(),
+                //     ItemTypeWidget(),
+                //     ItemTypeWidget(),
+                //   ],
+                // ),
+                const SizedBox(
+                  height: 12.0,
+                ),
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: types.map((e) => ItemTypeWidget()).toList(),
                 ),
                 const SizedBox(
                   height: 20.0,
