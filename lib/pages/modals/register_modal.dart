@@ -125,12 +125,12 @@ class _RegisterModalState extends State<RegisterModal> {
             height: 50.0,
             child: ElevatedButton(
               onPressed: () {
-                Map<String, dynamic> billMap = {
-                  "title": _titleController.text,
-                  "price": double.parse(_priceController.text), //parse
-                  "datetime": _dateController.text,
-                  "type": typeSelected,
-                };
+                // Map<String, dynamic> billMap = {
+                //   "title": _titleController.text,
+                //   "price": double.parse(_priceController.text), //parse
+                //   "datetime": _dateController.text,
+                //   "type": typeSelected,
+                // };
 
                 BillModel model = BillModel(
                   title: _titleController.text,
@@ -139,7 +139,23 @@ class _RegisterModalState extends State<RegisterModal> {
                   type: typeSelected,
                 );
 
-                DBAdmin().insertBill(model);
+                DBAdmin().insertBill(model).then((value) {
+                  if (value > 0) {
+                    //Se insertó correctamente
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          "Se realizó el registro correctamente.",
+                        ),
+                      ),
+                    );
+
+                    Navigator.pop(context);
+                  } else {}
+                }).catchError((error) {
+                  print(error);
+                });
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xff101321),

@@ -46,7 +46,7 @@ class DBAdmin {
 
   //Insertar Gasto
 
-  insertBill(BillModel data) async {
+  Future<int> insertBill(BillModel data) async {
     Database? db = await _checkDatabase();
     int res = await db!.insert(
       "BILL",
@@ -59,7 +59,7 @@ class DBAdmin {
       // },
       data.convertirAMap(),
     );
-    print(res);
+    return res;
   }
 
   //Actualizar Gasto
