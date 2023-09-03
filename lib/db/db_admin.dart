@@ -51,12 +51,13 @@ class DBAdmin {
     int res = await db!.insert(
       "BILL",
       // data,
-      {
-        "title": data.title,
-        "price": data.price,
-        "datetime": data.datetime,
-        "type": data.type,
-      },
+      // {
+      //   "title": data.title,
+      //   "price": data.price,
+      //   "datetime": data.datetime,
+      //   "type": data.type,
+      // },
+      data.convertirAMap(),
     );
     print(res);
   }
