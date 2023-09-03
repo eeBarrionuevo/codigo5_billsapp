@@ -1,3 +1,4 @@
+import 'package:codigo5_billsapp/db/db_admin.dart';
 import 'package:codigo5_billsapp/pages/modals/register_modal.dart';
 import 'package:codigo5_billsapp/utils/data_general.dart';
 import 'package:codigo5_billsapp/widgets/item_bill_widget.dart';
@@ -49,7 +50,9 @@ class _HomePageState extends State<HomePage> {
               // Expanded(child: SizedBox()),
               InkWell(
                 onTap: () {
-                  showRegisterModal();
+                  DBAdmin().getBills();
+                  DBAdmin().insertBill();
+                  // showRegisterModal();
                 },
                 child: Container(
                   width: double.infinity,
