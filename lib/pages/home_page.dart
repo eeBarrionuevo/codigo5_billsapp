@@ -148,7 +148,16 @@ class _HomePageState extends State<HomePage> {
                             const SizedBox(
                               height: 16.0,
                             ),
-                            ItemBillWidget(),
+                            ListView.builder(
+                              itemCount: bills.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index) {
+                                return ItemBillWidget(
+                                  data: bills[index],
+                                );
+                              },
+                            ),
                           ],
                         ),
                       ),

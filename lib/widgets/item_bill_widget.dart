@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ItemBillWidget extends StatelessWidget {
+  Map data;
+
+  ItemBillWidget({required this.data});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +20,7 @@ class ItemBillWidget extends StatelessWidget {
           width: 40,
         ),
         title: Text(
-          "Compras en el super",
+          data["title"],
           style: TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w700,
@@ -24,7 +28,7 @@ class ItemBillWidget extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          "14/01/2023 23:21 PM",
+          data["datetime"],
           style: TextStyle(
             fontSize: 13.0,
             fontWeight: FontWeight.w400,
@@ -32,7 +36,7 @@ class ItemBillWidget extends StatelessWidget {
           ),
         ),
         trailing: Text(
-          "S/ 400.00",
+          "S/ ${data["price"]}",
           style: TextStyle(
             fontSize: 14.0,
             fontWeight: FontWeight.w700,
