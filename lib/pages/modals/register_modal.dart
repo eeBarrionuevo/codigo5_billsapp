@@ -145,7 +145,12 @@ class _RegisterModalState extends State<RegisterModal> {
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text(
+                        backgroundColor: const Color(0xff06d6a0),
+                        behavior: SnackBarBehavior.floating,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14.0),
+                        ),
+                        content: const Text(
                           "Se realizó el registro correctamente.",
                         ),
                       ),
