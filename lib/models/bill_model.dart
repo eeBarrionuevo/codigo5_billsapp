@@ -11,7 +11,14 @@ class BillModel {
     required this.type,
   });
 
-  Map<String, dynamic> convertirAMap() => {
+  factory BillModel.fromJson(Map<String, dynamic> json) => BillModel(
+        title: json["title"],
+        price: json["price"],
+        datetime: json["datetime"],
+        type: json["type"],
+      );
+
+  Map<String, dynamic> toJson() => {
         "title": title,
         "price": price,
         "datetime": datetime,

@@ -1,7 +1,8 @@
+import 'package:codigo5_billsapp/models/bill_model.dart';
 import 'package:flutter/material.dart';
 
 class ItemBillWidget extends StatelessWidget {
-  Map data;
+  BillModel data;
 
   ItemBillWidget({required this.data});
 
@@ -20,7 +21,7 @@ class ItemBillWidget extends StatelessWidget {
           width: 40,
         ),
         title: Text(
-          data["title"],
+          data.title,
           style: TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w700,
@@ -28,7 +29,7 @@ class ItemBillWidget extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          data["datetime"],
+          data.datetime,
           style: TextStyle(
             fontSize: 13.0,
             fontWeight: FontWeight.w400,
@@ -36,7 +37,7 @@ class ItemBillWidget extends StatelessWidget {
           ),
         ),
         trailing: Text(
-          "S/ ${data["price"]}",
+          "S/ ${data.price}",
           style: TextStyle(
             fontSize: 14.0,
             fontWeight: FontWeight.w700,

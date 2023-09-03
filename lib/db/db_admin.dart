@@ -38,10 +38,23 @@ class DBAdmin {
 
   //Obtener Gastos
 
-  Future<List<Map>> getBills() async {
+  Future<List<BillModel>> getBills() async {
     Database? db = await _checkDatabase();
-    List<Map> data = await db!.query("BILL");
-    return data;
+    List<Map<String, dynamic>> data = await db!.query("BILL");
+
+    List<BillModel> bills = data.map((e) => BillModel.fromJson(e)).toList();
+
+    // for (var item in data) {
+    //   // BillModel model = BillModel(
+    //   //   title: item["title"],
+    //   //   price: item["price"],
+    //   //   datetime: item["datetime"],
+    //   //   type: item["type"],
+    //   // );
+    //   BillModel model = BillModel.convertirMapAModelo(item);
+    //   bills.add(model);
+    // }
+    return bills;
   }
 
   //Insertar Gasto
@@ -57,7 +70,7 @@ class DBAdmin {
       //   "datetime": data.datetime,
       //   "type": data.type,
       // },
-      data.convertirAMap(),
+      data.toJson(),
     );
     return res;
   }

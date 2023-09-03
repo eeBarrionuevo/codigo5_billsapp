@@ -1,4 +1,5 @@
 import 'package:codigo5_billsapp/db/db_admin.dart';
+import 'package:codigo5_billsapp/models/bill_model.dart';
 import 'package:codigo5_billsapp/pages/modals/register_modal.dart';
 import 'package:codigo5_billsapp/utils/data_general.dart';
 import 'package:codigo5_billsapp/widgets/item_bill_widget.dart';
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Map> bills = [];
+  List<BillModel> bills = [];
 
   TextEditingController _searchController = TextEditingController();
 
