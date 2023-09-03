@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
               // Expanded(child: SizedBox()),
               InkWell(
                 onTap: () {
-                  // showRegisterModal();
+                  showRegisterModal();
                 },
                 child: Container(
                   width: double.infinity,

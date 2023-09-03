@@ -1,3 +1,4 @@
+import 'package:codigo5_billsapp/db/db_admin.dart';
 import 'package:codigo5_billsapp/utils/data_general.dart';
 import 'package:codigo5_billsapp/widgets/item_type_widget.dart';
 import 'package:codigo5_billsapp/widgets/texfield_normal_widget.dart';
@@ -122,7 +123,16 @@ class _RegisterModalState extends State<RegisterModal> {
             width: double.infinity,
             height: 50.0,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Map<String, dynamic> billMap = {
+                  "title": "Viaje a Cusco",
+                  "price": 700.00,
+                  "datetime": "11/01/2023",
+                  "type": "Entretenimiento",
+                };
+
+                DBAdmin().insertBill(billMap);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xff101321),
                 shape: RoundedRectangleBorder(

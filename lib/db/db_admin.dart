@@ -45,16 +45,17 @@ class DBAdmin {
 
   //Insertar Gasto
 
-  insertBill() async {
+  insertBill(Map<String, dynamic> data) async {
     Database? db = await _checkDatabase();
     int res = await db!.insert(
       "BILL",
-      {
-        "title": "Compras de mercado",
-        "price": 2332.11,
-        "datetime": "12/12/2023",
-        "type": "Alimentos"
-      },
+      data,
+      // {
+      //   "title": title,
+      //   "price": price,
+      //   "datetime": datetime,
+      //   "type": "Alimentos"
+      // },
     );
     print(res);
   }
