@@ -4,24 +4,22 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DBAdmin {
-  Database? myDatabase;
+  Database? _myDatabase;
 
-  static final DBAdmin pepe = DBAdmin.mandarina();
-
-  DBAdmin.mandarina();
-
+  static final DBAdmin _instance = DBAdmin._();
+  DBAdmin._();
   factory DBAdmin() {
-    return pepe;
+    return _instance;
   }
 
-  Future<Database?> checkDatabase() async {
-    if (myDatabase == null) {
-      myDatabase = await initDatabase();
+  Future<Database?> _checkDatabase() async {
+    if (_myDatabase == null) {
+      _myDatabase = await _initDatabase();
     }
-    return myDatabase;
+    return _myDatabase;
   }
 
-  Future<Database> initDatabase() async {
+  Future<Database> _initDatabase() async {
     Directory directory = await getApplicationDocumentsDirectory();
     String pathDatabase = join(directory.path, "BillsDB.db");
 
@@ -40,7 +38,7 @@ class DBAdmin {
   //Obtener Gastos
 
   getBills() async {
-    Database? db = await checkDatabase();
+    Database? db = await _checkDatabase();
     List data = await db!.query("BILL");
     print(data);
   }
@@ -48,7 +46,7 @@ class DBAdmin {
   //Insertar Gasto
 
   insertBill() async {
-    Database? db = await checkDatabase();
+    Database? db = await _checkDatabase();
     int res = await db!.insert(
       "BILL",
       {

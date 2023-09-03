@@ -50,8 +50,6 @@ class _HomePageState extends State<HomePage> {
               // Expanded(child: SizedBox()),
               InkWell(
                 onTap: () {
-                  DBAdmin().getBills();
-                  DBAdmin().insertBill();
                   // showRegisterModal();
                 },
                 child: Container(
