@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:codigo5_billsapp/models/bill_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -45,17 +46,17 @@ class DBAdmin {
 
   //Insertar Gasto
 
-  insertBill(Map<String, dynamic> data) async {
+  insertBill(BillModel data) async {
     Database? db = await _checkDatabase();
     int res = await db!.insert(
       "BILL",
-      data,
-      // {
-      //   "title": title,
-      //   "price": price,
-      //   "datetime": datetime,
-      //   "type": "Alimentos"
-      // },
+      // data,
+      {
+        "title": data.title,
+        "price": data.price,
+        "datetime": data.datetime,
+        "type": data.type,
+      },
     );
     print(res);
   }
