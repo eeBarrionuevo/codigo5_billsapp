@@ -31,7 +31,9 @@ class _HomePageState extends State<HomePage> {
           child: RegisterModal(),
         );
       },
-    );
+    ).then((value) {
+      getDataGeneral();
+    });
   }
 
   @override
