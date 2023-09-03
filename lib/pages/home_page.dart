@@ -13,6 +13,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Map> bills = [];
+
   TextEditingController _searchController = TextEditingController();
 
   showRegisterModal() {
@@ -29,6 +31,17 @@ class _HomePageState extends State<HomePage> {
         );
       },
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getDataGeneral();
+  }
+
+  Future<void> getDataGeneral() async {
+    bills = await DBAdmin().getBills();
+    setState(() {});
   }
 
   @override
@@ -135,15 +148,6 @@ class _HomePageState extends State<HomePage> {
                             const SizedBox(
                               height: 16.0,
                             ),
-                            ItemBillWidget(),
-                            ItemBillWidget(),
-                            ItemBillWidget(),
-                            ItemBillWidget(),
-                            ItemBillWidget(),
-                            ItemBillWidget(),
-                            ItemBillWidget(),
-                            ItemBillWidget(),
-                            ItemBillWidget(),
                             ItemBillWidget(),
                           ],
                         ),

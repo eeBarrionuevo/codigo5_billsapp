@@ -38,10 +38,10 @@ class DBAdmin {
 
   //Obtener Gastos
 
-  getBills() async {
+  Future<List<Map>> getBills() async {
     Database? db = await _checkDatabase();
-    List data = await db!.query("BILL");
-    print(data);
+    List<Map> data = await db!.query("BILL");
+    return data;
   }
 
   //Insertar Gasto
